@@ -9,12 +9,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.shoppersparadise.databinding.CategoriesItemLayoutBinding;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CategoriesItemAdapter extends RecyclerView.Adapter<CategoriesItemViewHolder> {
 
-    public ArrayList<Categories> categoriesArrayList;
+    private List<String> categoriesArrayList;
 
-    public void setCategoriesArrayList(ArrayList<Categories> categoriesArrayList) {
+    public void setCategoriesArrayList(List<String> categoriesArrayList) {
         this.categoriesArrayList = categoriesArrayList;
         notifyDataSetChanged();
     }
@@ -29,8 +30,8 @@ public class CategoriesItemAdapter extends RecyclerView.Adapter<CategoriesItemVi
 
     @Override
     public void onBindViewHolder(@NonNull CategoriesItemViewHolder holder, int position) {
-        Categories categories = categoriesArrayList.get(position);
-        holder.binding.setCategories(categories);
+        String categories = categoriesArrayList.get(position);
+        holder.binding.setCategories(new Categories(categories));
     }
 
     @Override
