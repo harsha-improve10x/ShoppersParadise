@@ -1,9 +1,10 @@
-package com.example.shoppersparadise;
+package com.example.shoppersparadise.categories;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 
+import com.example.shoppersparadise.base.BaseActivity;
 import com.example.shoppersparadise.databinding.ActivityCategoriesBinding;
 
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class CategoriesActivity extends BaseActivity {
     }
 
     private void fetchCategories() {
-        Call<List<String>> call = categoriesService.fetchCategories();
+        Call<List<String>> call = shopService.fetchCategories();
         call.enqueue(new Callback<List<String>>() {
             @Override
             public void onResponse(Call<List<String>> call, Response<List<String>> response) {

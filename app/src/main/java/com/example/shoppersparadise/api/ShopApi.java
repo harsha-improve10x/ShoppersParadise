@@ -1,16 +1,18 @@
-package com.example.shoppersparadise;
+package com.example.shoppersparadise.api;
+
+import com.example.shoppersparadise.Constants;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class CategoriesApi {
+public class ShopApi {
 
-    public CategoriesService createCategoriesService() {
+    public ShopService createCategoriesService() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        CategoriesService categoriesService = retrofit.create(CategoriesService.class);
-        return categoriesService;
+        ShopService shopService = retrofit.create(ShopService.class);
+        return shopService;
     }
 }

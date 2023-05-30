@@ -1,4 +1,4 @@
-package com.example.shoppersparadise;
+package com.example.shoppersparadise.categories;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoppersparadise.databinding.CategoriesItemLayoutBinding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CategoriesItemAdapter extends RecyclerView.Adapter<CategoriesItemViewHolder> {

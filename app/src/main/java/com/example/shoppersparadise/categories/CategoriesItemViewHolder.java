@@ -1,4 +1,4 @@
-package com.example.shoppersparadise;
+package com.example.shoppersparadise.categories;
 
 import android.view.View;
 

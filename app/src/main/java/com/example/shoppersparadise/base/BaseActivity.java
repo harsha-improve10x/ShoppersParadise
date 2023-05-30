@@ -1,13 +1,17 @@
-package com.example.shoppersparadise;
+package com.example.shoppersparadise.base;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.shoppersparadise.R;
+import com.example.shoppersparadise.api.ShopApi;
+import com.example.shoppersparadise.api.ShopService;
+
 public class BaseActivity extends AppCompatActivity {
 
-    protected CategoriesService categoriesService;
+    protected ShopService shopService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +25,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     private void setUpCategoriesService() {
-        CategoriesApi categoriesApi = new CategoriesApi();
-        categoriesService = categoriesApi.createCategoriesService();
+        ShopApi shopApi = new ShopApi();
+        shopService = shopApi.createCategoriesService();
     }
 }
