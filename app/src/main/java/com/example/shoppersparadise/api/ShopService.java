@@ -1,6 +1,7 @@
 package com.example.shoppersparadise.api;
 
 import com.example.shoppersparadise.Constants;
+import com.example.shoppersparadise.categories.Categories;
 
 import java.util.List;
 
@@ -11,4 +12,6 @@ public interface ShopService {
 
     @GET(Constants.CATEGORIES_END_POINT)
     Call<List<String>> fetchCategories();
+
+
 }
