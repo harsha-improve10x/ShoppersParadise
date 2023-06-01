@@ -1,6 +1,8 @@
 package com.example.shoppersparadise.categories;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -13,10 +15,15 @@ import java.util.List;
 public class CategoriesItemAdapter extends RecyclerView.Adapter<CategoriesItemViewHolder> {
 
     private List<String> categoriesArrayList;
+    public OnItemActionListener onItemActionListener;
 
     public void setCategoriesArrayList(List<String> categoriesArrayList) {
         this.categoriesArrayList = categoriesArrayList;
         notifyDataSetChanged();
+    }
+
+    public void setOnItemActionListener(OnItemActionListener onItemActionListener) {
+        this.onItemActionListener = onItemActionListener;
     }
 
     @NonNull
@@ -28,9 +35,15 @@ public class CategoriesItemAdapter extends RecyclerView.Adapter<CategoriesItemVi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoriesItemViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CategoriesItemViewHolder holder, @SuppressLint("RecyclerView") int position) {
         String categories = categoriesArrayList.get(position);
         holder.binding.setCategories(new Categories(categories));
+        holder.binding.getRoot().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemActionListener.onClicked(categoriesArrayList.get(position));
+            }
+        });
     }
 
     @Override

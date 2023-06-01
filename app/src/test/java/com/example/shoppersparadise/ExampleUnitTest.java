@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 import com.example.shoppersparadise.api.ShopApi;
 import com.example.shoppersparadise.api.ShopService;
-import com.example.shoppersparadise.categories.Categories;
+import com.example.shoppersparadise.product.Product;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -33,5 +33,15 @@ public class ExampleUnitTest {
         assertNotNull(categories);
         assertFalse(categories.isEmpty());
         System.out.println(new Gson().toJson(categories));
+    }
+
+    @Test
+    public void getProducts() throws IOException {
+        ShopService shopService = new ShopApi().createCategoriesService();
+        Call<List<Product>> call = shopService.fetchProducts("jewelery");
+        List<Product> products = call.execute().body();
+        assertNotNull(products);
+        assertFalse(products.isEmpty());
+        System.out.println(new Gson().toJson(products));
     }
 }

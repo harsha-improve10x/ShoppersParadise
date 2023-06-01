@@ -2,8 +2,10 @@ package com.example.shoppersparadise.categories;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.shoppersparadise.product.ProductsActivity;
 import com.example.shoppersparadise.base.BaseActivity;
 import com.example.shoppersparadise.databinding.ActivityCategoriesBinding;
 
@@ -39,6 +41,14 @@ public class CategoriesActivity extends BaseActivity {
     private void setUpCategoriesAdapter() {
         categoriesItemAdapter = new CategoriesItemAdapter();
         categoriesItemAdapter.setCategoriesArrayList(categories);
+        categoriesItemAdapter.setOnItemActionListener(new OnItemActionListener() {
+            @Override
+            public void onClicked(String categoryName) {
+                Intent intent = new Intent(getApplicationContext(), ProductsActivity.class);
+                intent.putExtra("category", categoryName);
+                startActivity(intent);
+            }
+        });
     }
 
     private void fetchCategories() {
