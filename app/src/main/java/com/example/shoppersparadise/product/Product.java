@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Product {
 
-    private String id;
+    private Integer id;
 
     private String title;
 
@@ -13,13 +13,15 @@ public class Product {
     @SerializedName("image")
     private String imageUrl;
 
+    private String description;
+
     public Rating rating;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -53,5 +55,13 @@ public class Product {
 
     public void setRating(Rating rating) {
         this.rating = rating;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

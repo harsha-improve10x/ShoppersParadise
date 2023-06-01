@@ -2,8 +2,10 @@ package com.example.shoppersparadise.product;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.shoppersparadise.ProductDetailsActivity;
 import com.example.shoppersparadise.base.BaseActivity;
 import com.example.shoppersparadise.databinding.ActivityProductsBinding;
 
@@ -26,9 +28,9 @@ public class ProductsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         productsBinding = ActivityProductsBinding.inflate(getLayoutInflater());
         setContentView(productsBinding.getRoot());
-        getSupportActionBar().setTitle("Products");
         if (getIntent().hasExtra("category")) {
             category = getIntent().getStringExtra("category");
+            getSupportActionBar().setTitle(category);
         }
         setUpProductsAdapter();
         setUpProductsRv();
@@ -43,6 +45,14 @@ public class ProductsActivity extends BaseActivity {
     private void setUpProductsAdapter() {
         productsItemAdapter = new ProductsItemAdapter();
         productsItemAdapter.setProductArrayList(products);
+        productsItemAdapter.setOnItemActionListener(new OnItemActionListener() {
+            @Override
+            public void onClicked(int productsId) {
+                Intent intent = new Intent(getApplicationContext(), ProductDetailsActivity.class);
+                intent.putExtra("products", productsId);
+                startActivity(intent);
+            }
+        });
     }
 
     private void fetchProducts() {

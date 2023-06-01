@@ -11,16 +11,17 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:layout_margin="4dp"
         app:cardCornerRadius="20dp"
         app:cardPreventCornerOverlap="true"
-        app:strokeColor="#050505"
+        app:strokeColor="#0040FF"
         app:strokeWidth="2dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="8dp">
 
             <ImageView
                 android:id="@+id/products_iv"
@@ -42,6 +43,7 @@
                 android:maxLines="2"
                 android:text="@{product.title}"
                 android:textAllCaps="false"
+                android:textColor="#020202"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/products_iv"
@@ -60,10 +62,12 @@
                 android:id="@+id/products_count_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="8dp"
                 android:text="@{`(`+ String.valueOf(product.rating.count) + `)`}"
+                android:textColor="#040404"
+                app:layout_constraintBottom_toBottomOf="@+id/products_rb"
                 app:layout_constraintStart_toEndOf="@+id/products_rb"
-                app:layout_constraintTop_toBottomOf="@+id/products_iv"
+                app:layout_constraintTop_toTopOf="@+id/products_rb"
                 tools:text="count" />
 
             <TextView
@@ -71,7 +75,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{`₹`+ String.valueOf(product.price)}"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/products_rb"
                 tools:text="Price" />
         </androidx.constraintlayout.widget.ConstraintLayout>
