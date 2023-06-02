@@ -58,12 +58,12 @@ public class CategoriesActivity extends BaseActivity {
             public void onResponse(Call<List<String>> call, Response<List<String>> response) {
                 List<String> categories = response.body();
                 categoriesItemAdapter.setCategoriesArrayList(categories);
-                showToast("Successfully Fetched the Data");
+                showToast("Successfully Loaded The Data");
             }
 
             @Override
             public void onFailure(Call<List<String>> call, Throwable t) {
-                showToast("Failed to fetch the data");
+                showToast("Failed to Load the Data");
             }
         });
     }
