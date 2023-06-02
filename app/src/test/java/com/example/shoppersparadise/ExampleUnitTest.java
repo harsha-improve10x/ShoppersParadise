@@ -10,6 +10,7 @@ import com.example.shoppersparadise.model.Product;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -43,5 +44,14 @@ public class ExampleUnitTest {
         assertNotNull(products);
         assertFalse(products.isEmpty());
         System.out.println(new Gson().toJson(products));
+    }
+
+    @Test
+    public void getCart() throws IOException {
+        FakeApiService fakeApiService = new FakeApi().createCategoriesService();
+        Call<Products> call = fakeApiService.fetchCarts(1);
+        Products productsArrayList = call.execute().body();
+        assertNotNull(productsArrayList);
+        System.out.println(new Gson().toJson(productsArrayList));
     }
 }

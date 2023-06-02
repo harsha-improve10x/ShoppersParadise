@@ -1,13 +1,18 @@
 package com.example.shoppersparadise.product;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
+import com.example.shoppersparadise.CartActivity;
 import com.example.shoppersparadise.Constants;
 import com.example.shoppersparadise.ProductDetailsActivity;
+import com.example.shoppersparadise.R;
 import com.example.shoppersparadise.base.BaseActivity;
 import com.example.shoppersparadise.databinding.ActivityProductsBinding;
 import com.example.shoppersparadise.model.Product;
@@ -39,6 +44,23 @@ public class ProductsActivity extends BaseActivity {
         }
         setUpProductsAdapter();
         setUpProductsRv();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.product_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId()==R.id.cart_add_product) {
+            Intent intent = new Intent(this, CartActivity.class);
+            startActivity(intent);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override

@@ -1,8 +1,10 @@
 package com.example.shoppersparadise.api;
 
 import com.example.shoppersparadise.Constants;
+import com.example.shoppersparadise.Products;
 import com.example.shoppersparadise.model.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -19,4 +21,7 @@ public interface FakeApiService {
 
     @GET("products/{productsId}")
     Call<Product> fetchProductDetails(@Path("productsId") int productsId);
+
+    @GET("carts/{id}")
+    Call<Products> fetchCarts(@Path("id")int id);
 }
