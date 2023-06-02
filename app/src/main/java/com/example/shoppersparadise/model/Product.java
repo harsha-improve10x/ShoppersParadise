@@ -1,8 +1,9 @@
-package com.example.shoppersparadise.product;
+package com.example.shoppersparadise.model;
 
 import com.google.gson.annotations.SerializedName;
 
 public class Product {
+    //Todo create Model Package
 
     private Integer id;
 

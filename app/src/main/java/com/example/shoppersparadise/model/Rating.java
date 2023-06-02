@@ -1,4 +1,4 @@
-package com.example.shoppersparadise.product;
+package com.example.shoppersparadise.model;
 
 public class Rating {
 

@@ -4,9 +4,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-import com.example.shoppersparadise.api.ShopApi;
-import com.example.shoppersparadise.api.ShopService;
-import com.example.shoppersparadise.product.Product;
+import com.example.shoppersparadise.api.FakeApi;
+import com.example.shoppersparadise.api.FakeApiService;
+import com.example.shoppersparadise.model.Product;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -27,8 +27,8 @@ public class ExampleUnitTest {
 
     @Test
     public void getCategory() throws IOException {
-        ShopService shopService = new ShopApi().createCategoriesService();
-        Call<List<String>> call = shopService.fetchCategories();
+        FakeApiService fakeApiService = new FakeApi().createCategoriesService();
+        Call<List<String>> call = fakeApiService.fetchCategories();
         List<String> categories = call.execute().body();
         assertNotNull(categories);
         assertFalse(categories.isEmpty());
@@ -37,8 +37,8 @@ public class ExampleUnitTest {
 
     @Test
     public void getProducts() throws IOException {
-        ShopService shopService = new ShopApi().createCategoriesService();
-        Call<List<Product>> call = shopService.fetchProducts("jewelery");
+        FakeApiService fakeApiService = new FakeApi().createCategoriesService();
+        Call<List<Product>> call = fakeApiService.fetchProducts("jewelery");
         List<Product> products = call.execute().body();
         assertNotNull(products);
         assertFalse(products.isEmpty());

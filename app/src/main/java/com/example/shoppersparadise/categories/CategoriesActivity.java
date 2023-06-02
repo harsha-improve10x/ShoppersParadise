@@ -4,7 +4,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
+import com.example.shoppersparadise.Constants;
 import com.example.shoppersparadise.product.ProductsActivity;
 import com.example.shoppersparadise.base.BaseActivity;
 import com.example.shoppersparadise.databinding.ActivityCategoriesBinding;
@@ -20,7 +22,7 @@ public class CategoriesActivity extends BaseActivity {
 
     private ActivityCategoriesBinding activityCategoriesBinding;
     private ArrayList<String> categories = new ArrayList<>();
-    private CategoriesItemAdapter categoriesItemAdapter;
+    private CategoriesAdapter categoriesAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,37 +34,40 @@ public class CategoriesActivity extends BaseActivity {
         setUpCategoriesRv();
         fetchCategories();
     }
-
     private void setUpCategoriesRv() {
         activityCategoriesBinding.categoriesRv.setLayoutManager(new LinearLayoutManager(this));
-        activityCategoriesBinding.categoriesRv.setAdapter(categoriesItemAdapter);
+        activityCategoriesBinding.categoriesRv.setAdapter(categoriesAdapter);
     }
-
     private void setUpCategoriesAdapter() {
-        categoriesItemAdapter = new CategoriesItemAdapter();
-        categoriesItemAdapter.setCategoriesArrayList(categories);
-        categoriesItemAdapter.setOnItemActionListener(new OnItemActionListener() {
-            @Override
-            public void onClicked(String categoryName) {
-                Intent intent = new Intent(getApplicationContext(), ProductsActivity.class);
-                intent.putExtra("category", categoryName);
-                startActivity(intent);
-            }
+        categoriesAdapter = new CategoriesAdapter();
+        categoriesAdapter.setCategoriesArrayList(categories);
+        categoriesAdapter.setOnItemActionListener(categoryName -> {
+            Intent intent = new Intent(CategoriesActivity.this, ProductsActivity.class);
+            intent.putExtra(Constants.KEY_CATEGORY_VALUE, categoryName);
+            startActivity(intent);
         });
     }
 
+    private void showProgressBar() {
+        activityCategoriesBinding.categoriesPb.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgressBar() {
+        activityCategoriesBinding.categoriesPb.setVisibility(View.GONE);
+    }
     private void fetchCategories() {
-        Call<List<String>> call = shopService.fetchCategories();
+        showProgressBar();
+        Call<List<String>> call = fakeApiService.fetchCategories();
         call.enqueue(new Callback<List<String>>() {
             @Override
             public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+                hideProgressBar();
                 List<String> categories = response.body();
-                categoriesItemAdapter.setCategoriesArrayList(categories);
-                showToast("Successfully Loaded The Data");
+                categoriesAdapter.setCategoriesArrayList(categories);
             }
-
             @Override
             public void onFailure(Call<List<String>> call, Throwable t) {
+                hideProgressBar();
                 showToast("Failed to Load the Data");
             }
         });

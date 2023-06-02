@@ -6,12 +6,12 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.shoppersparadise.R;
-import com.example.shoppersparadise.api.ShopApi;
-import com.example.shoppersparadise.api.ShopService;
+import com.example.shoppersparadise.api.FakeApi;
+import com.example.shoppersparadise.api.FakeApiService;
 
 public class BaseActivity extends AppCompatActivity {
 
-    protected ShopService shopService;
+    protected FakeApiService fakeApiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     private void setUpCategoriesService() {
-        ShopApi shopApi = new ShopApi();
-        shopService = shopApi.createCategoriesService();
+        FakeApi fakeApi = new FakeApi();
+        fakeApiService = fakeApi.createCategoriesService();
     }
 }

@@ -1,16 +1,11 @@
 package com.example.shoppersparadise;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.view.View;
 
-import com.example.shoppersparadise.R;
 import com.example.shoppersparadise.base.BaseActivity;
 import com.example.shoppersparadise.databinding.ActivityProductDetailsBinding;
-import com.example.shoppersparadise.product.Product;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.shoppersparadise.model.Product;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,7 +13,7 @@ import retrofit2.Response;
 
 public class ProductDetailsActivity extends BaseActivity {
     private ActivityProductDetailsBinding activityProductDetailsBinding;
-    int productId;
+    private int productId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,25 +21,34 @@ public class ProductDetailsActivity extends BaseActivity {
         activityProductDetailsBinding = ActivityProductDetailsBinding.inflate(getLayoutInflater());
         setContentView(activityProductDetailsBinding.getRoot());
         getSupportActionBar().setTitle("Product Details");
-        if (getIntent().hasExtra("products")) {
-            productId = getIntent().getIntExtra("products", productId);
+        if (getIntent().hasExtra(Constants.KEY_PRODUCT_VALUE)) {
+            productId = getIntent().getIntExtra(Constants.KEY_PRODUCT_VALUE, productId);
         }
         fetchProductDetails();
     }
 
+    private void showProgressBar() {
+        activityProductDetailsBinding.productDetailsPb.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgressBar() {
+        activityProductDetailsBinding.productDetailsPb.setVisibility(View.GONE);
+    }
+
     private void fetchProductDetails() {
-       Call<Product> call = shopService.fetchProductDetails(productId);
+        showProgressBar();
+       Call<Product> call = fakeApiService.fetchProductDetails(productId);
        call.enqueue(new Callback<Product>() {
            @Override
            public void onResponse(Call<Product> call, Response<Product> response) {
+               hideProgressBar();
                Product product = response.body();
                activityProductDetailsBinding.setProduct(product);
                activityProductDetailsBinding.productDetailsRb.setRating(product.rating.getRate());
-               showToast("Successfully Loaded The Data");
            }
-
            @Override
            public void onFailure(Call<Product> call, Throwable t) {
+               hideProgressBar();
                showToast("Failed To load Data");
            }
        });
