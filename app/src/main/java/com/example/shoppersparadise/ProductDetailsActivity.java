@@ -1,7 +1,10 @@
 package com.example.shoppersparadise;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+
+import androidx.annotation.NonNull;
 
 import com.example.shoppersparadise.base.BaseActivity;
 import com.example.shoppersparadise.databinding.ActivityProductDetailsBinding;
@@ -20,11 +23,22 @@ public class ProductDetailsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         activityProductDetailsBinding = ActivityProductDetailsBinding.inflate(getLayoutInflater());
         setContentView(activityProductDetailsBinding.getRoot());
-        getSupportActionBar().setTitle("Product Details");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if (getIntent().hasExtra(Constants.KEY_PRODUCT_VALUE)) {
             productId = getIntent().getIntExtra(Constants.KEY_PRODUCT_VALUE, productId);
+            getSupportActionBar().setTitle("Product Details");
         }
         fetchProductDetails();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId()==android.R.id.home) {
+            finish();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     private void showProgressBar() {

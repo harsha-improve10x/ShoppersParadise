@@ -12,10 +12,9 @@ import com.example.shoppersparadise.model.Product;
 import java.util.List;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsViewHolder> {
-    //Todo ProductsAdapter
 
     private List<Product> productArrayList;
-    OnItemActionListener onItemActionListener;
+    private OnItemActionListener onItemActionListener;
 
     void setProductArrayList(List<Product> productArrayList) {
         this.productArrayList = productArrayList;

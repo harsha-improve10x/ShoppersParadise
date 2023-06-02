@@ -15,7 +15,7 @@ import java.util.List;
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesViewHolder> {
 
     private List<String> categoriesArrayList;
-    OnItemActionListener onItemActionListener;
+    private OnItemActionListener onItemActionListener;
 
     void setCategoriesArrayList(List<String> categoriesArrayList) {
         this.categoriesArrayList = categoriesArrayList;

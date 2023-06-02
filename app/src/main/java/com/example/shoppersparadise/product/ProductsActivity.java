@@ -31,14 +31,19 @@ public class ProductsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         productsBinding = ActivityProductsBinding.inflate(getLayoutInflater());
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(productsBinding.getRoot());
-        //Todo use constants
         if (getIntent().hasExtra(Constants.KEY_CATEGORY_VALUE)) {
             category = getIntent().getStringExtra(Constants.KEY_CATEGORY_VALUE);
             getSupportActionBar().setTitle(category);
         }
         setUpProductsAdapter();
         setUpProductsRv();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         fetchProducts();
     }
 
@@ -50,15 +55,10 @@ public class ProductsActivity extends BaseActivity {
     private void setUpProductsAdapter() {
         productsAdapter = new ProductsAdapter();
         productsAdapter.setProductArrayList(products);
-        //Todo use Lambda function
-        productsAdapter.setOnItemActionListener(new OnItemActionListener() {
-            @Override
-            public void onClicked(int productsId) {
-                Intent intent = new Intent(ProductsActivity.this, ProductDetailsActivity.class);
-                //Todo use Constants
-                intent.putExtra(Constants.KEY_PRODUCT_VALUE, productsId);
-                startActivity(intent);
-            }
+        productsAdapter.setOnItemActionListener(productsId -> {
+            Intent intent = new Intent(ProductsActivity.this, ProductDetailsActivity.class);
+            intent.putExtra(Constants.KEY_PRODUCT_VALUE, productsId);
+            startActivity(intent);
         });
     }
 
