@@ -70,7 +70,6 @@ public class ProductDetailsActivity extends BaseActivity {
                hideProgressBar();
                Product product = response.body();
                activityProductDetailsBinding.setProduct(product);
-               activityProductDetailsBinding.productDetailsRb.setRating(product.rating.getRate());
            }
            @Override
            public void onFailure(Call<Product> call, Throwable t) {

@@ -1,9 +1,8 @@
 package com.example.shoppersparadise.model;
 
-import com.google.gson.annotations.SerializedName;
+import java.util.ArrayList;
 
 public class Product {
-    //Todo create Model Package
 
     private Integer id;
 
@@ -11,12 +10,9 @@ public class Product {
 
     private Float price;
 
-    @SerializedName("image")
-    private String imageUrl;
-
     private String description;
 
-    public Rating rating;
+    private ArrayList<String> images;
 
     public Integer getId() {
         return id;
@@ -42,27 +38,19 @@ public class Product {
         this.price = price;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public Rating getRating() {
-        return rating;
-    }
-
-    public void setRating(Rating rating) {
-        this.rating = rating;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public ArrayList<String> getImages() {
+        return images;
+    }
+
+    public void setImages(ArrayList<String> images) {
+        this.images = images;
     }
 }

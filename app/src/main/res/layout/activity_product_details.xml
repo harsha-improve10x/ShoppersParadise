@@ -31,7 +31,7 @@
             android:id="@+id/product_details_count_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{`(` + String.valueOf(product.rating.count) + `)`}"
+            android:text="text"
             android:textColor="#070707"
             app:layout_constraintBottom_toBottomOf="@+id/product_details_rb"
             app:layout_constraintStart_toEndOf="@+id/product_details_rb"
@@ -76,7 +76,7 @@
 
         <ImageView
             android:id="@+id/products_image_url_iv"
-            imageUrl="@{product.imageUrl}"
+            imageUrl="@{product.images.get(0)}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"

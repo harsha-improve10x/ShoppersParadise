@@ -37,7 +37,6 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsViewHolder> {
     public void onBindViewHolder(@NonNull ProductsViewHolder holder, int position) {
         Product product = productArrayList.get(position);
         holder.productItemLayoutBinding.setProduct(product);
-        holder.productItemLayoutBinding.productsRb.setRating(product.rating.getRate());
         holder.productItemLayoutBinding.getRoot().setOnClickListener(v -> {
             onItemActionListener.onClicked(productArrayList.get(position).getId());
         });

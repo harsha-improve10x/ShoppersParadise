@@ -25,7 +25,7 @@
 
             <ImageView
                 android:id="@+id/products_iv"
-                imageUrl="@{product.imageUrl}"
+                imageUrl="@{product.images.get(0)}"
                 android:layout_width="wrap_content"
                 android:layout_height="200dp"
                 android:adjustViewBounds="true"
@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@{`(`+ String.valueOf(product.rating.count) + `)`}"
+                android:text=""
                 android:textColor="#040404"
                 app:layout_constraintBottom_toBottomOf="@+id/products_rb"
                 app:layout_constraintStart_toEndOf="@+id/products_rb"

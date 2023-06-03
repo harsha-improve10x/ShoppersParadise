@@ -30,7 +30,7 @@ public class ProductsActivity extends BaseActivity {
     private ArrayList<Product> products = new ArrayList<>();
     private ProductsAdapter productsAdapter;
 
-    private String category;
+    private int category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class ProductsActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(productsBinding.getRoot());
         if (getIntent().hasExtra(Constants.KEY_CATEGORY_VALUE)) {
-            category = getIntent().getStringExtra(Constants.KEY_CATEGORY_VALUE);
+            category = getIntent().getIntExtra(Constants.KEY_CATEGORY_VALUE,0);
             getSupportActionBar().setTitle(category);
         }
         setUpProductsAdapter();
