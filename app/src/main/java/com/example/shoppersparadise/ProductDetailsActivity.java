@@ -78,5 +78,4 @@ public class ProductDetailsActivity extends BaseActivity {
            }
        });
     }
-
 }
