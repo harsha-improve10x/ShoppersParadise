@@ -1,10 +1,10 @@
 package com.example.shoppersparadise.categories;
 
-public class Categories {
+public class Category {
 
     public String name;
 
-    public Categories(String name) {
+    public Category(String name) {
         this.name = name;
     }
 }

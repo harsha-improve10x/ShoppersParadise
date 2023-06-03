@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="string"
-            type="String" />
+            name="category"
+            type="com.example.shoppersparadise.categories.Category" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="serif"
                 android:padding="8dp"
-                android:text="@{string}"
+                android:text="@{category.name}"
                 android:textAllCaps="true"
                 android:textColor="#0228FF"
                 android:textSize="24sp"

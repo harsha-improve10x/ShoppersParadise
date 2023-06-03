@@ -26,7 +26,7 @@ import retrofit2.Response;
 public class CategoriesActivity extends BaseActivity {
 
     private ActivityCategoriesBinding activityCategoriesBinding;
-    private ArrayList<String> categories = new ArrayList<>();
+    private ArrayList<Category> categories = new ArrayList<>();
     private CategoriesAdapter categoriesAdapter;
 
     @Override
@@ -37,7 +37,7 @@ public class CategoriesActivity extends BaseActivity {
         getSupportActionBar().setTitle("Categories");
         setUpCategoriesAdapter();
         setUpCategoriesRv();
-       // fetchCategories();
+        fetchCategories();
     }
 
     @Override
@@ -79,21 +79,24 @@ public class CategoriesActivity extends BaseActivity {
     private void hideProgressBar() {
         activityCategoriesBinding.categoriesPb.setVisibility(View.GONE);
     }
-   /* private void fetchCategories() {
+   private void fetchCategories() {
         showProgressBar();
-        Call<List<String>> call = fakeApiService.fetchCategories();
-        call.enqueue(new Callback<List<String>>() {
-            @Override
-            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
-                hideProgressBar();
-                List<String> categories = response.body();
-                categoriesAdapter.setCategoriesArrayList(categories);
-            }
-            @Override
-            public void onFailure(Call<List<String>> call, Throwable t) {
-                hideProgressBar();
-                showToast("Failed to Load the Data");
-            }
-        });
-    }*/
+       Call<List<Category>> call = fakeApiService.fetchCategories();
+       call.enqueue(new Callback<List<Category>>() {
+           @Override
+           public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
+               hideProgressBar();
+               if (response.isSuccessful()) {
+                   List<Category> category = response.body();
+                   categoriesAdapter.setCategoriesArrayList(category);
+               }
+           }
+
+           @Override
+           public void onFailure(Call<List<Category>> call, Throwable t) {
+               hideProgressBar();
+               showToast("failed to load Data");
+           }
+       });
+    }
 }

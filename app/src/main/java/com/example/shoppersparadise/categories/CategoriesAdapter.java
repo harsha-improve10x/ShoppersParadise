@@ -14,10 +14,10 @@ import java.util.List;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesViewHolder> {
 
-    private List<String> categoriesArrayList;
+    private List<Category> categoriesArrayList;
     private OnItemActionListener onItemActionListener;
 
-    void setCategoriesArrayList(List<String> categoriesArrayList) {
+    void setCategoriesArrayList(List<Category> categoriesArrayList) {
         this.categoriesArrayList = categoriesArrayList;
         notifyDataSetChanged();
     }
@@ -36,10 +36,10 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull CategoriesViewHolder holder, int position) {
-        String categories = categoriesArrayList.get(position);
-        holder.categoriesItemLayoutBinding.setString(categories);
+        Category categories = categoriesArrayList.get(position);
+        holder.categoriesItemLayoutBinding.setCategory(categories);
         holder.categoriesItemLayoutBinding.getRoot().setOnClickListener(v -> {
-            onItemActionListener.onClicked(categoriesArrayList.get(position));
+            onItemActionListener.onClicked(categoriesArrayList.get(position).toString());
         });
     }
 
