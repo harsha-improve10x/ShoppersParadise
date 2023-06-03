@@ -1,52 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="cartProduct"
             type="com.example.shoppersparadise.CartProduct" />
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/product_id_cart_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@{String.valueOf(cartProduct.productId)}"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/quantity_cart_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@{String.valueOf(cartProduct.quantity)}"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/product_id_cart_txt"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/product_id_cart_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@{String.valueOf(cartProduct.productId)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="ProductId" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/quantity_cart_txt"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_do_disturb_on_24" />
+        <TextView
+            android:id="@+id/quantity_cart_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="192dp"
+            android:layout_marginTop="20dp"
+            android:text="@{String.valueOf(cartProduct.quantity)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Quantity" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/quantity_cart_txt"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_add_circle_outline_24" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toEndOf="@+id/quantity_cart_txt"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_do_disturb_on_24" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toStartOf="@+id/quantity_cart_txt"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_add_circle_outline_24" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

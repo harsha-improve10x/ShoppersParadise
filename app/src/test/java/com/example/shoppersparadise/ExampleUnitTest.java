@@ -49,7 +49,7 @@ public class ExampleUnitTest {
     @Test
     public void getCart() throws IOException {
         FakeApiService fakeApiService = new FakeApi().createCategoriesService();
-        Call<Cart> call = fakeApiService.fetchCarts(1);
+        Call<Cart> call = fakeApiService.fetchCarts();
         Cart carts = call.execute().body();
         assertNotNull(carts);
         System.out.println(new Gson().toJson(carts));
