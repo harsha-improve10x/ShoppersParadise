@@ -37,7 +37,7 @@ public class CategoriesActivity extends BaseActivity {
         getSupportActionBar().setTitle("Categories");
         setUpCategoriesAdapter();
         setUpCategoriesRv();
-        fetchCategories();
+       // fetchCategories();
     }
 
     @Override
@@ -79,7 +79,7 @@ public class CategoriesActivity extends BaseActivity {
     private void hideProgressBar() {
         activityCategoriesBinding.categoriesPb.setVisibility(View.GONE);
     }
-    private void fetchCategories() {
+   /* private void fetchCategories() {
         showProgressBar();
         Call<List<String>> call = fakeApiService.fetchCategories();
         call.enqueue(new Callback<List<String>>() {
@@ -95,5 +95,5 @@ public class CategoriesActivity extends BaseActivity {
                 showToast("Failed to Load the Data");
             }
         });
-    }
+    }*/
 }

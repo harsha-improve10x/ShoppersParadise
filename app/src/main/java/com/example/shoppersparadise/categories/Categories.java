@@ -2,9 +2,9 @@ package com.example.shoppersparadise.categories;
 
 public class Categories {
 
-    public String title;
+    public String name;
 
-    public Categories(String title) {
-        this.title = title;
+    public Categories(String name) {
+        this.name = name;
     }
 }
