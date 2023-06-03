@@ -40,7 +40,6 @@ public class ProductsActivity extends BaseActivity {
         setContentView(productsBinding.getRoot());
         if (getIntent().hasExtra(Constants.KEY_CATEGORY_VALUE)) {
             category = getIntent().getIntExtra(Constants.KEY_CATEGORY_VALUE,0);
-            getSupportActionBar().setTitle(category);
         }
         setUpProductsAdapter();
         setUpProductsRv();
