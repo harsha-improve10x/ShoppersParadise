@@ -49,9 +49,9 @@ public class ExampleUnitTest {
     @Test
     public void getCart() throws IOException {
         FakeApiService fakeApiService = new FakeApi().createCategoriesService();
-        Call<Products> call = fakeApiService.fetchCarts(1);
-        Products productsArrayList = call.execute().body();
-        assertNotNull(productsArrayList);
-        System.out.println(new Gson().toJson(productsArrayList));
+        Call<Cart> call = fakeApiService.fetchCarts(1);
+        Cart carts = call.execute().body();
+        assertNotNull(carts);
+        System.out.println(new Gson().toJson(carts));
     }
 }

@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.shoppersparadise.databinding.ProductItemLayoutBinding;
 
 public class ProductsViewHolder extends RecyclerView.ViewHolder {
-    //Todo ProductsViewHolder
 
     ProductItemLayoutBinding productItemLayoutBinding;
 
