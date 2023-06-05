@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.shoppersparadise.SearchActivity;
 import com.example.shoppersparadise.cart.CartActivity;
 import com.example.shoppersparadise.Constants;
 import com.example.shoppersparadise.ProductDetailsActivity;
@@ -55,6 +56,10 @@ public class ProductsActivity extends BaseActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId()==R.id.cart_add_product) {
             Intent intent = new Intent(this, CartActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.product_search) {
+            Intent intent = new Intent(this, SearchActivity.class);
             startActivity(intent);
             return true;
         } else {

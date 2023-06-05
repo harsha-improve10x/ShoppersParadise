@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.shoppersparadise.SearchActivity;
 import com.example.shoppersparadise.cart.CartActivity;
 import com.example.shoppersparadise.Constants;
 import com.example.shoppersparadise.R;
@@ -52,10 +53,14 @@ public class CategoriesActivity extends BaseActivity {
             Intent intent = new Intent(this, CartActivity.class);
             startActivity(intent);
             return true;
-        } else {
+        } else if (item.getItemId()==R.id.search_item) {
+            Intent intent = new Intent(this, SearchActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        else {
             return super.onOptionsItemSelected(item);
         }
-
     }
 
     private void setUpCategoriesRv() {
