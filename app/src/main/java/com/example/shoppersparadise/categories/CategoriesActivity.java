@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.shoppersparadise.CartActivity;
+import com.example.shoppersparadise.cart.CartActivity;
 import com.example.shoppersparadise.Constants;
 import com.example.shoppersparadise.R;
 import com.example.shoppersparadise.product.ProductsActivity;

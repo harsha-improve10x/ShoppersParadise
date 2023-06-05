@@ -1,6 +1,5 @@
-package com.example.shoppersparadise;
+package com.example.shoppersparadise.cart;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;

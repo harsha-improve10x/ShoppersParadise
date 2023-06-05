@@ -1,4 +1,4 @@
-package com.example.shoppersparadise;
+package com.example.shoppersparadise.cart;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoppersparadise.databinding.CartItemLayoutBinding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CartsAdapter extends RecyclerView.Adapter<CartsViewHolder> {

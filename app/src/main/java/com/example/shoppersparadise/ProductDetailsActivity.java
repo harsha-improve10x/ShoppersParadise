@@ -9,6 +9,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 
 import com.example.shoppersparadise.base.BaseActivity;
+import com.example.shoppersparadise.cart.CartActivity;
 import com.example.shoppersparadise.databinding.ActivityProductDetailsBinding;
 import com.example.shoppersparadise.model.Product;
 

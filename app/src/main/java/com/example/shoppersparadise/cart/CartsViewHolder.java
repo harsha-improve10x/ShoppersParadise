@@ -1,4 +1,4 @@
-package com.example.shoppersparadise;
+package com.example.shoppersparadise.cart;
 
 import android.view.View;
 

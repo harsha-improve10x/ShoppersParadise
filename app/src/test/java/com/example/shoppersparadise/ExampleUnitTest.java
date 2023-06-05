@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 
 import com.example.shoppersparadise.api.FakeApi;
 import com.example.shoppersparadise.api.FakeApiService;
+import com.example.shoppersparadise.cart.Cart;
 import com.example.shoppersparadise.categories.Category;
 import com.example.shoppersparadise.model.Product;
 import com.google.gson.Gson;
@@ -62,5 +63,15 @@ public class ExampleUnitTest {
         Cart carts = call.execute().body();
         assertNotNull(carts);
         System.out.println(new Gson().toJson(carts));
+    }
+
+    @Test
+    public void getSearchDetails() throws IOException {
+        FakeApiService fakeApiService = new FakeApi().createCategoriesService();
+        Call<List<Product>> call = fakeApiService.fetchSearchDetails("Generic");
+        List<Product> products = call.execute().body();
+        assertNotNull(products);
+        assertFalse(products.isEmpty());
+        System.out.println(new Gson().toJson(products));
     }
 }

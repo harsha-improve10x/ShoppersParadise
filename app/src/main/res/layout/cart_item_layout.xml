@@ -5,7 +5,7 @@
     <data>
         <variable
             name="cartProduct"
-            type="com.example.shoppersparadise.CartProduct" />
+            type="com.example.shoppersparadise.cart.CartProduct" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

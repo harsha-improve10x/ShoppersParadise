@@ -1,6 +1,6 @@
 package com.example.shoppersparadise.api;
 
-import com.example.shoppersparadise.Cart;
+import com.example.shoppersparadise.cart.Cart;
 import com.example.shoppersparadise.Constants;
 import com.example.shoppersparadise.categories.Category;
 import com.example.shoppersparadise.model.Product;
@@ -25,4 +25,7 @@ public interface FakeApiService {
 
     @GET("carts/1?userId=1")
     Call<Cart> fetchCarts();
+
+    @GET("api/v1/products/")
+    Call<List<Product>> fetchSearchDetails(@Query("title") String title);
 }
